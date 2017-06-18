@@ -5,8 +5,8 @@
   <title>Quickhint Autocompletion</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="/webview/css/style.css">
-  <script src="/webview/js/quickhit.js"></script>
+  <link rel="stylesheet" href="https://github.com/omarshariffathi/quickhint/tree/gh-pages/webview/css/style.css">
+  <script src="https://github.com/omarshariffathi/quickhint/tree/gh-pages/webview/js/quickhit.js"></script>
 </head>
 
 <header style="font-family: 'Bangers', cursive; text-decoration: underline;">
@@ -50,7 +50,7 @@
             $('div.content').html("No results.");
             $("#inp").attr('disabled');
             $.ajax({
-              url: "./webview/assets/words.txt",
+              url: "https://github.com/omarshariffathi/quickhint/tree/gh-pages/webview/assets/words.txt",
               async: false,
               success: function (data){
                 Module.loadFileFromSource(data);
@@ -103,7 +103,7 @@
         complete();
       }
   </script>
-  <script src="/webview/js/simulation.js"></script>
+  <script src="https://github.com/omarshariffathi/quickhint/tree/gh-pages/webview/js/simulation.js"></script>
 </body>
 <footer>
 <div style="background: transparent">
