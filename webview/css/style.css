@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Cookie');
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+[class*="entypo-"]:before {
+  font-family: 'Raleway', cursive;
+}
+
+*, div {
+  box-sizing: border-box;
+}
+
+a {
+  color: black;
+}
+
+button {
+  font-size: 25px;
+  color: #996515;
+  background-color: transparent;
+  border: 0 none transparent;
+  cursor: pointer;
+  font-family: 'Bangers', cursive;
+  text-decoration: underline;
+}
+
+header .right {
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  height: 5%;
+  padding: 0;
+  margin: 0;
+}
+
+header .left {
+  position: fixed;
+  top: 40px;
+  left: 20px;
+  height: 5%;
+  padding: 0;
+  margin: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  height: 5%;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 90%;
+  -webkit-font-smoothing: antialiased;
+  background: #ddd url(../images/bg.jpg);
+}
+
+.container {
+  display: block;
+  width: 50%;
+  margin: 10px auto 0 auto;
+  background: #fff;
+  height: 70vh;
+}
+
+.sw {
+  float: center;
+  width: 100%;
+  height: 70px;
+  background: #ffffff;
+  padding: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  box-shadow: 0 2px 0 0px rgba(0, 0, 0, 0.1);
+}
+.sw form {
+  float: left;
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.sw a.logo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  width: auto;
+  height: 100%;
+  max-width: 70px;
+  margin-right: 10px;
+  -webkit-transition: all 0.05s ease-in-out;
+  transition: all 0.05s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+  background-image: url("https://gmrui.com/img/logo.png");
+  background-position: 0 center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.sw a.logo img {
+  max-width: 100%;
+  width: auto;
+}
+.sw .search {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  background: #fff;
+  padding: 20px;
+  font-size: 25px;
+  font-family: 'Raleway', cursive;
+  height: 70px;
+  -webkit-transition: all 0.05s ease-in-out;
+  transition: all 0.05s ease-in-out;
+  -webkit-appearance: none;
+  text-align: center;
+  color: #333;
+}
+.sw .search:focus {
+  height: 70px;
+  font-size: 30px;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 10px 30px;
+}
+.sw .search:focus + .go {
+  height: 70px;
+  margin-right: -25px;
+  max-width: 80px;
+  color: #ffffff;
+  text-align: center;
+}
+.sw .search:focus + .go + a.logo {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 0px;
+  margin-right: 0;
+  text-align: center;
+}
+.sw .go {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  max-width: 50px;
+  display: inline-block;
+  border: none;
+  background: #fff;
+  color: #ccc;
+  height: 50px;
+  -webkit-transition: all 0.05s ease-in-out;
+  transition: all 0.05s ease-in-out;
+  font-size: 21px;
+  outline: none;
+  text-align: center;
+}
+
+.content {
+  float: left;
+  width: 100%;
+  clear: both;
+  padding: 15px;
+  text-align: center;
+  color: #996515;
+  overflow-y: scroll;
+  font-size: 22px;
+}
+.content h1 {
+  font-family: 'Raleway', cursive;
+  color: #996515;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.02em;
+  margin-top: 20px 0 0 0;
+}
+.content p {
+  font-family: 'Raleway', cursive;
+  color: #996515;
+  -webkit-font-smoothing: antialiased;
+}
+.content p a {
+  color: #996515;
+  text-decoration: none;
+}
+.content p a:hover {
+  text-decoration: underline;
+}
+.content cite {
+  color: #996515;
+}

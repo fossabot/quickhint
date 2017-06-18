@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Quickhint Autocompletion</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/webview/css/style.css">
+  <script src="/webview/js/quickhit.js"></script>
+</head>
+
+<header style="font-family: 'Bangers', cursive; text-decoration: underline;">
+  <div class="right">
+    <a href="https://github.com/omarshariffathi/autocompletion" style="font-size: 27px; text-align: right;">Github Page !</a>
+  </div>
+  <div class="left">
+    <button class="simulate" style="text-align: left;" onmouseup="Simulate()">Play help ?</button>
+  </div>
+</header>
+<body>
+  <div style="background: transparent">
+    <h1 style="text-align: center; font-size: 45px; font-family: 'Bangers', cursive;">
+        <span>Quickhint </span><span style="color: white">Auto</span><span style="color: #996515">completion</span>
+      </h1>
+    </div>
+  <div class="container">
+    <div class="sw">
+      <form>
+        <input id="inp" onKeyDown="onKeyPressed(event)" onKeyUp="onKeyReleased(event)" type="search" class="search" placeholder="Which word would you like to search for ?"/>
+      </form>
+    </div>
+    <div class="content">
+    </div>
+  </div>
+  
+  <script>
+
+    $(window).resize(function () {
+      $('div.content').css('max-height', '' +  $('div.container').height() - $('div.sw').height() - 20 + "px");
+      console.log("fired");  
+    });
+    $('div.content').css('max-height', '' +  $('div.container').height() - $('div.sw').height() - 20 + "px");
+
+      function updateResults(completion) {
+          $('div.content').html(completion);
+      }
+      // load data async from the web
+      setTimeout(function() {
+          try {
+            $('div.content').html("No results.");
+            $("#inp").attr('disabled');
+            $.ajax({
+              url: "./webview/assets/words.txt",
+              async: false,
+              success: function (data){
+                Module.loadFileFromSource(data);
+              }
+            });
+            $("#inp").removeAttr('disabled');
+            $('div.content').html("No results.");
+          } catch (error) {
+              $('div.content').html("error, reload.");
+          }
+      }, 10);
+
+      function complete() {
+          var txt = document.getElementById("inp").value;
+          if (txt.length > 2) {
+            var reg = /([a-zA-Z]+)$/g;
+            var match = reg.exec(txt);
+            if(match) {
+              var str = match[1];
+              if(str.length >= 2) {
+                  Module.complete("START", str, "updateResults");
+              } else {
+                  $('div.content').html("No Results.");
+              }
+            }
+          }
+      }
+
+      function onKeyPressed(e) {
+        if(e.keyCode === 13){
+          e.preventDefault(); // Otherwise the form will be submitted
+          e.preventDefault(); // Ensure it is only this code that rusn
+          var url = document.getElementById("inp").value;
+          var iurl = url.replace(" ", "+");
+          var win = window.open("https://www.google.com/#q=" + iurl, '_blank');
+          win.focus();
+        } else {
+          var txt = document.getElementById("inp").value;
+          if(txt.length < 2) {
+            $('div.content').html("No Results.");
+          }
+        }
+      }
+
+      function onKeyReleased(e) {
+        var txt = document.getElementById("inp").value;
+        if(txt.length < 2) {
+          $('div.content').html("No Results.");
+        }
+        complete();
+      }
+  </script>
+  <script src="/webview/js/simulation.js"></script>
+</body>
+<footer>
+<div style="background: transparent">
+    <h1 style="text-align: right; font-size: 25px; font-family: 'Bangers', cursive;">
+        <span style="text-decoration: underline;">Developed BY<br></span>
+        <span style="color: white">Omar </span><span style="color: #996515">Sharif Fathi</span>
+      </h1>
+    </div>
+</footer>
+</html>
