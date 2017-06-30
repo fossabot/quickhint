@@ -2,11 +2,14 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Quickhint Autocompletion</title>
+  <title>Quickhit Autocompletion</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="webview/css/style.css">
-  <script src="webview/js/quickhit.js"></script>
+  <link rel="stylesheet" href="/webview/css/style.css">
+  <script src="/webview/js/quickhit.js"></script>
 </head>
 
 <header style="font-family: 'Bangers', cursive; text-decoration: underline;">
@@ -15,109 +18,152 @@
   </div>
   <div class="left">
     <button class="simulate" style="text-align: left;" onmouseup="Simulate()">Play help ?</button>
+
+    <!--Menu-->
+    <!---->
   </div>
 </header>
 <body>
+  <!--Alert -->
+  <div class="modal fade">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="font-family: 'Bangers', cursive;">Quickhit Autocompletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="font-family: 'Raleway', cursive;">
+          <p>This is a demo that demonstrates the speed of <span style="font-weight: bold">deep neural networks</span> algorithm developed to autocomplete english words from the dictionary.
+            <br><br>Start writing the very first <span style="font-weight: bold">3 or more characters</span> of a word and you shall get all possible completions in less than 100 milliseconds.
+            <br><br>If you are facing problems, click on <span style="font-weight: bold">PLAY HELP!</span> on the top left side
+            <br><br>This is work in progress, feel free to contact me on my <span style="font-weight: bold">Github</span> Page.
+            </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
   <div style="background: transparent">
     <h1 style="text-align: center; font-size: 45px; font-family: 'Bangers', cursive;">
-        <span>Quickhint, </span><span style="color: white">Auto</span><span style="color: #996515">completion</span>
+        <button style="text-align: center; font-size: 45px; font-family: 'Bangers', cursive; color: black;" > <span>Quickhit, </span></button><span style="color: white">Auto</span><span style="color: #996515">completion</span>
       </h1>
     </div>
   <div class="container">
     <div class="sw">
       <form>
-        <input id="inp" onKeyDown="onKeyPressed(event)" onKeyUp="onKeyReleased(event)" type="search" class="search" placeholder="Which word would you like to search for ?"/>
+        <input id="inp" onKeyDown="onKeyPressed(event)" onKeyUp="onKeyReleased(event)" type="search" class="search" placeholder="Which word are you looking for ?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       </form>
     </div>
     <div class="content">
     </div>
   </div>
-  
+
   <script>
 
-    $(window).resize(function () {
-      $('div.content').css('max-height', '' +  $('div.container').height() - $('div.sw').height() - 20 + "px");
-      console.log("fired");  
-    });
-    $('div.content').css('max-height', '' +  $('div.container').height() - $('div.sw').height() - 20 + "px");
+    $('.modal').modal('show')
 
-      function updateResults(completion) {
-          $('div.content').html(completion);
-      }
+    window.onload = function() {
+
+      $(window).resize(function () {
+        $('div.content').css('max-height', '' +  $('div.container').height() - $('div.sw').height() - 20 + "px");
+        console.log("fired");
+      });
+      $('div.content').css('max-height', '' +  $('div.container').height() - $('div.sw').height() - 20 + "px");
+
       // load data async from the web
       setTimeout(function() {
           try {
-            $('div.content').html("No results.");
+            $('div.content').html("No Results.");
             $("#inp").attr('disabled');
             $.ajax({
-              url: "webview/assets/words.txt",
+              url: "webview/assets/English.txt",
               async: false,
               success: function (data){
-                Module.loadFileFromSource(data);
+                Module.loadFileFromSource((data), "english");
               }
             });
-            $("#inp").removeAttr('disabled');
-            $('div.content').html("No results.");
           } catch (error) {
               $('div.content').html("error, reload.");
           }
-      }, 10);
+      });
+    }
 
-      function complete() {
-          var txt = document.getElementById("inp").value;
-          if (txt.length > 2) {
-            var reg = /([a-zA-Z]+)$/g;
-            var match = reg.exec(txt);
-            if(match) {
-              var str = match[1];
-              if(str.length >= 2) {
-                  Module.complete("START", str, "updateResults");
-              } else {
-                  $('div.content').html("No Results.");
+    function updateResults(completion) {
+      if(completion == "") {
+        $('div.content').html("No Results.");
+      } else {
+        $('div.content').html(completion);
+        var txt = document.getElementById("inp").value;
+        if($('#inp').val().length !== 0){
+          $('div.content').each(function(){
+            var search_value = $("#inp").val();
+            if (search_value.length > 2) {
+              var reg = /(\w+)$/g;
+              var match = reg.exec(search_value);
+              if(match) {
+                var str = match[1];
+                var search_regexp = new RegExp(str, "g");
+                $(this).html($(this).html().replace(search_regexp,"<span style = 'color: black;'>"+str+"</span>"));
               }
-            }
-          }
+            };
+          });
+        }
       }
+    }
 
-      function onKeyPressed(e) {
-        if(e.keyCode === 13){
-          e.preventDefault(); // Otherwise the form will be submitted
-          e.preventDefault(); // Ensure it is only this code that rusn
-          var url = document.getElementById("inp").value;
-          var iurl = url.replace(" ", "+");
-          var win = window.open("https://www.google.com/#q=" + iurl, '_blank');
-          win.focus();
-        } else {
-          var txt = document.getElementById("inp").value;
-          if(txt.length < 2) {
-            $('div.content').html("No Results.");
+    function complete() {
+      var txt = document.getElementById("inp").value;
+      if (txt.length > 2) {
+        var reg = /(\w+)$/g;
+        var match = reg.exec(txt);
+        if(match) {
+          var str = match[1];
+          if(str.length > 2) {
+            // POSITION, sort or not ?, word, cache name, callback function
+              Module.complete("START", true, str, "english", "updateResults"); // START, END, ANYWHERE
+          } else {
+              $('div.content').html("No Results.");
           }
         }
       }
+    }
 
-      function onKeyReleased(e) {
+    function onKeyPressed(e) {
+      if(e.keyCode === 13){
+        e.preventDefault(); // Otherwise the form will be submitted
+        e.preventDefault(); // Ensure it is only this code that rusn
+        var url = document.getElementById("inp").value;
+        var iurl = encodeURIComponent(url);
+        var win = window.open("https://www.google.com/#q=" + iurl, '_blank');
+        win.focus();
+      } else {
         var txt = document.getElementById("inp").value;
         if(txt.length < 2) {
           $('div.content').html("No Results.");
         }
-        complete();
       }
+    }
+
+    function onKeyReleased(e) {
+      var txt = document.getElementById("inp").value;
+      if(txt.length < 2) {
+        $('div.content').html("No Results.");
+      }
+      complete();
+    }
   </script>
-  <script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		  ga('create', 'UA-98422035-1', 'auto');
-		  ga('send', 'pageview');
-		</script>
   <script src="webview/js/simulation.js"></script>
 </body>
 <footer>
 <div style="background: transparent">
     <h1 style="text-align: right; font-size: 25px; font-family: 'Bangers', cursive;">
         <span style="text-decoration: underline;">Developed BY<br></span>
-        <span style="color: #996515">Omar Sharif Fathi</span>
+        <span style="color: white">Omar </span><span style="color: #996515">Sharif Fathi</span>
       </h1>
     </div>
 </footer>

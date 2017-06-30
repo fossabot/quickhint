@@ -7,6 +7,7 @@ function Simulate() {
     $('.simulate').css('color', 'white');
     $('.simulate').prop('disabled', true);
     $(".simulate").html('Playing !');
+    $("#inp").val("");
     $("#inp").prop('disabled', true);
     setTimeout(function(){
         var value = "hello world";
