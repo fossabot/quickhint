@@ -89,4 +89,4 @@ this should print in console `mono<br>mouse<br>monkey<br>mosquito<br>mosquito<br
 
 
 ## License
-`check ` [License](https://github.com/omarshariffathi/quickhint/blob/gh-pages/License.md)
+`MIT` [License](https://github.com/omarshariffathi/quickhint/blob/gh-pages/License.md)
