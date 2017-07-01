@@ -86,3 +86,7 @@ this should print in console `mono<br>mouse<br>monkey<br>mosquito<br>mosquito<br
 
 ## C++14 example code
 `You can find a very simple example of the code here` [C++14 quickhint](https://github.com/omarshariffathi/Autocompletion)
+
+
+## License
+`check ` [License](https://github.com/omarshariffathi/quickhint/blob/gh-pages/License.md)
