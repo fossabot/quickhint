@@ -5,7 +5,7 @@
 
 
 ### What is quickhint ?
-`quickhint is a c++14 implementation of autocompletion algorithm that provides fastest response possible.`
+`quickhint is a c++14 implementation of autocompletion algorithm that provides fastest response possible. I am using recurrent neural networks to detect possible matches.`
 
 
 
@@ -89,4 +89,4 @@ this should print in console `mono<br>mouse<br>monkey<br>mosquito<br>mosquito<br
 
 
 ## License
-`MIT` [License](https://github.com/omarshariffathi/quickhint/blob/gh-pages/License.md)
+`MIT LICENSE` [here](https://github.com/omarshariffathi/quickhint/blob/gh-pages/License.md)
