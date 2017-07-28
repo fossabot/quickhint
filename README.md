@@ -5,7 +5,7 @@
 
 
 ### What is quickhint ?
-`quickhint is a c++14 implementation of autocompletion algorithm that provides fastest response possible. I am using recurrent neural networks to detect possible matches.`
+`quickhint is a c++14 implementation of autocompletion algorithm that provides fastest response possible. I am using a new method I created my own that is a bit similar to how recurrent neural networks are structured but without any learning phase or perceptrons or anything.`
 
 
 
