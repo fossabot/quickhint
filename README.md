@@ -1,4 +1,6 @@
 # quickhint
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fo-micron%2Fquickhint.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fo-micron%2Fquickhint?ref=badge_shield)
+
 
 `C++14` `emscripten` `javascript`
 
@@ -87,3 +89,6 @@ this should print in console `mono<br>mouse<br>monkey<br>mosquito<br>mosquito<br
 
 ## License
 `MIT LICENSE` [here](https://github.com/omarshariffathi/quickhint/blob/gh-pages/License.md)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fo-micron%2Fquickhint.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fo-micron%2Fquickhint?ref=badge_large)
